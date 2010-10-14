@@ -1,0 +1,18 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/Constructor.t
+t/Data-Range-Compare.t
+t/cmp_ops.t
+t/next_previous.t
+t/overlap.t
+t/poc.t
+t/process.t
+t/sort_funcs.t
+t/start_end.t
+t/subclass.t
+lib/Data/Range/Compare.pm
+lib/Data/Range/Compare.pod
+examples/example_a.pl
+META.yml                                 Module meta-data (added by MakeMaker)

@@ -1,0 +1,328 @@
+
+RCS file: /home/cvs/perl/Data-Range-Compare/Changes,v
+Working file: Changes
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:51 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/MANIFEST,v
+Working file: MANIFEST
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2010-10-13 22:46:23 -0400;  author: wicket;  state: Exp;  lines: +1 -0;  commitid: Tfb8UfIAKquQ6mSu;
+adding example file and folder to the manifest
+----------------------------
+revision 1.2
+date: 2010-10-13 22:39:40 -0400;  author: wicket;  state: Exp;  lines: +10 -0;  commitid: SK4vnMxX4sQx4mSu;
+rolling in more pod changes
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/Makefile.PL,v
+Working file: Makefile.PL
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2010-10-13 22:44:34 -0400;  author: wicket;  state: Exp;  lines: +1 -1;  commitid: SNgLIJFciTxb6mSu;
+rolling in make file changes
+----------------------------
+revision 1.2
+date: 2010-10-13 22:39:40 -0400;  author: wicket;  state: Exp;  lines: +1 -1;  commitid: SK4vnMxX4sQx4mSu;
+rolling in more pod changes
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/README,v
+Working file: README
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2010-10-13 22:39:40 -0400;  author: wicket;  state: Exp;  lines: +2 -21;  commitid: SK4vnMxX4sQx4mSu;
+rolling in more pod changes
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/pm_to_blib,v
+Working file: pm_to_blib
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/examples/example_a.pl,v
+Working file: examples/example_a.pl
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 22:44:43 -0400;  author: wicket;  state: Exp;  commitid: SNgLIJFciTxb6mSu;
+Example added
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare.pm,v
+Working file: lib/Data/Range/Compare.pm
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2010-10-13 22:26:55 -0400;  author: wicket;  state: Exp;  lines: +4 -5;  commitid: 20rk0hYXV4ra0mSu;
+package is almost ready for release
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare.pod,v
+Working file: lib/Data/Range/Compare.pod
+head: 1.4
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 4;	selected revisions: 4
+description:
+----------------------------
+revision 1.4
+date: 2010-10-13 22:44:51 -0400;  author: wicket;  state: Exp;  lines: +0 -2;  commitid: SNgLIJFciTxb6mSu;
+pod changes
+----------------------------
+revision 1.3
+date: 2010-10-13 22:39:40 -0400;  author: wicket;  state: Exp;  lines: +2 -0;  commitid: SK4vnMxX4sQx4mSu;
+rolling in more pod changes
+----------------------------
+revision 1.2
+date: 2010-10-13 22:26:55 -0400;  author: wicket;  state: Exp;  lines: +302 -3;  commitid: 20rk0hYXV4ra0mSu;
+package is almost ready for release
+----------------------------
+revision 1.1
+date: 2010-10-13 18:10:53 -0400;  author: wicket;  state: Exp;  commitid: AGSQpPNhL1DiAkSu;
+adding the base pod
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/Constructor.t,v
+Working file: t/Constructor.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/Data-Range-Compare.t,v
+Working file: t/Data-Range-Compare.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/cmp_ops.t,v
+Working file: t/cmp_ops.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/next_previous.t,v
+Working file: t/next_previous.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/overlap.t,v
+Working file: t/overlap.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/poc.t,v
+Working file: t/poc.t
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2010-10-13 22:26:55 -0400;  author: wicket;  state: Exp;  lines: +0 -1;  commitid: 20rk0hYXV4ra0mSu;
+package is almost ready for release
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/process.t,v
+Working file: t/process.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/sort_funcs.t,v
+Working file: t/sort_funcs.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/start_end.t,v
+Working file: t/start_end.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/t/subclass.t,v
+Working file: t/subclass.t
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiIbUGq8wvkSu;
+checking everything in for the first time
+=============================================================================

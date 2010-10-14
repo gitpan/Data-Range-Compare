@@ -1,0 +1,333 @@
+=head1 NAME
+
+Data::Range::Compare - Framework for calculating range intersections
+
+=head1 SYNOPSIS
+
+  use Data::Range::Compare qw(HELPER_CB);
+
+  my %helper=HELPER_CB;
+
+  my @tom;
+  my @harry;
+  my @sally;
+
+  push @tom,Data::Range::Compare->new(\%helper,0,1);
+  push @tom,Data::Range::Compare->new(\%helper,3,7);
+
+  push @harry,Data::Range::Compare->new(\%helper,9,11);
+
+  push @sally,Data::Range::Compare->new(\%helper,6,7);
+
+  my @cmp=(\@tom,\@harry,\@sally);
+
+  my $sub=Data::Range::Compare->range_compare(\%helper,\@cmp);
+  while(my @row=$sub->()) {
+    my $common_range=
+      Data::Range::Compare->get_common_range(\%helper,\@row);
+    print "Common Range: $common_range\n";
+    my ($tom,$harry,$sally)=@row;
+    print "tom:   $tom\n";
+    print "harry: $harry\n";
+    print "sally: $sally\n";
+  }
+
+=head1 DESCRIPTION
+
+This package is a extensible framework for finding intersections between two dimensional ranges of data.
+
+Data::Range::Compare is not intended to be used directly although you can.  For the most part it is intended to be subclassed by other packages.
+
+=head2 Export list
+
+:KEYS
+
+  key_helper
+  key_start
+  key_end
+  key_generated
+  key_missing
+  key_data
+
+:HELPER_CB
+
+  HELPER_CB
+
+:HELPER
+
+  add_one
+  sub_one
+  cmp_values
+
+:SORT
+
+  sort_largest_range_end_first
+  sort_largest_range_start_first
+  sort_smallest_range_start_first
+  sort_smallest_range_end_first
+  sort_in_consolidate_order
+  sort_in_presentation_order
+
+
+=head2 OO Methods
+
+This section covers the OO Methods in the package
+
+=over 3
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1);
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated);
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated,$missing);
+
+This function acts as the general package constructor.  
+
+$generated represents the $range->generated state
+
+$missing represents the $range->missing state
+
+%helper should contain the following key=>code_refs.
+
+  add_one=>\&add_one
+  sub_one=>\&sub_one
+  cmp_values=>\&cmp_values
+
+
+add_one
+
+This function accepts 1 argument and returns the next thing.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
+
+  Example:
+
+  $helper{add_one}=sub {$_[0] + 1};
+  my $next=$helper{add_one}->(1);
+  $next==2;
+
+  Same as
+
+  %helper=HELPER_CB;
+
+  Or Write your own
+
+  # a-z example
+  my @list=('a' .. 'z');
+  my $id=-1; 
+  my %ids=map { ($_,++$id) } @list;
+
+  sub my_add_one {
+    my $here=$ids{$_[0]};
+    ++$here;
+    return 'z' if $#list<$here;
+    $list[$here]
+  }
+
+  $helper{add_one}=\&my_add_one;
+  my $next=$helper{add_one}->('a');
+  $next eq 'b';
+
+sub_one
+
+This function accepts 1 argument and returns the next thing.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
+
+  Example:
+
+  $helper{sub_one}=sub {$_[0] - 1};
+  my $next=$helper{sub_one}->(1);
+  $next==0;
+
+  Same as
+
+  %helper=HELPER_CB;
+
+  Or Write your own
+
+  # a-z example
+  my @list=('a' .. 'z');
+  my $id=-1; 
+  my %ids=map { ($_,++$id) } @list;
+
+  sub my_sub_one {
+    my $here=$ids{$_[0]};
+    --$here;
+    return 'z' if 0>$here;
+    $list[$here]
+  }
+
+  $helper{sub_one}=\&my_sub_one;
+  my $next=$helper{sub_one}->('a');
+  $next eq 'b';
+
+cmp_values
+
+This function accepts 2 arguments and should return one of the following values: 0,-1,1
+
+Examples:
+
+  $helper{cmp_values}=sub {$_[0] <=> $_[1] };
+  my $cmp=$helper{cmp_values}->(0,1);
+  $cmp==-1;
+
+  Same as
+
+  %helper=HELPER_CB;
+
+  Or Write your own
+
+  # a-z example
+  $helper{cmp_values}=sub {$_[0] cmp $_[1] };
+  my $cmp=$helper{cmp_values}->(qw(a b));
+  $cmp==-1;
+
+=item * my $value=$range->helper_cb('add_one',1)
+
+=item * my $value=$range->helper_cb('sub_one',1)
+
+=item * my $value=$range->helper_cb('cmp_values',1,1)
+
+Grants access to this range's \%helper
+
+=item * my $range_end=$range->range_end;
+
+Returns the "thing" that is denoted as the end of this range.
+
+=item * my $range_start=$range->range_start;
+
+Returns the "thing" that is denoted as the start of this range.
+
+=item * my $notation=$range->notation;
+
+Returns a string representing "range_start - range_end".  This is the same as print $range;.
+
+=item * my $helper_hash=$range->helper_hash;
+
+Gets the \%helper for this instance.
+
+=item * if($range->missing) { .. }
+
+Returns the missing state
+
+=item * if($range->generated) { .. }
+
+Returns the generated state
+
+=item * $range->data->{some_lable}='some value'
+
+=item * my $value=$range->data->{some_lable};
+
+=item * my $hash_ref=$range->data;
+
+Lets you tag this block with your data.
+
+=item * if($range->overlap($another_range);
+
+Returns true if either of these ranges overlap.
+
+=item * my $next_start=$range->next_range_start;
+
+Gets the thing that represents the start of the next range.
+
+=item * my $previous_end=$range->previous_range_end;
+
+Gets the thing that represents the end of the previous range.
+
+
+=item * my $cmp=$range->cmp_range_start($range_b);
+
+Wrapper function does the same as the following.
+
+  my $cmp=$range->helper_cb(
+    'cmp_values'
+    ,$range->range_start
+    ,$range_b->range_start
+  );
+
+=item * my $cmp=$range->cmp_range_end($range_b); 
+
+Wrapper function does the same as the following.
+
+  my $cmp=$range->helper_cb(
+    'cmp_values'
+    ,$range->range_end
+    ,$range_b->range_end
+  );
+
+=item * my $cmp=$range->cmp_ranges($range_b);
+
+Does an an ascending order style comparison.
+
+=item * my $common=Data::Range::Compare->get_common_range(\%helper,\@list)
+
+Returns a new Data::Range::Compare object representing the common ranges between ranges found in \@list.
+
+=item * my $range=Data::Range::Compare->get_overlapping_range(\%helper,\@list);
+
+Returns a new Data::Range::Compare object representing the outer most start and end found in \@list.
+
+=item * my $ref=Data::Range::Compare->consolidate_ranges(\%helper,\@list);
+
+Returns a list reference of sorted and consolidated Data::Range::Compare objects .
+
+=item * my $ref=Data::Range::Compare->fill_missing_ranges(\%helper,\@list);
+
+Returns a sorted contiguous list of Data::Range::Compare objects.  All objects generated by fill_missing_ranges are created as missing and generated.
+
+=item * my $ref=Data::Range::Compare->range_start_end_fill(\%helper,@list_of_lists);
+
+Creates filler ranges ensuring each list of ranges starts and ends with the same value.  All ranges created by range_start_end_fill are missing and generated.
+
+=item * my $sub=Data::Range::Compare->range_compare(\%helper,@list_of_lists);
+
+Returns an anonymous function.  The function can be used to iterate through the list of lists at intersecting points.
+
+=back
+
+=head2 Sort Methods
+
+This section documents the export-able sort functions.  These are low level sort functions and must be used in a call to "sort".
+
+Example: 
+
+  @list=sort sort_in_presentation_order @list;
+
+=over 3
+
+=item * @list=sort sort_in_presentation_order @unsorted_list;
+
+Sorts a list of Data::Range::Compare objects in presentation order.
+
+=item * @list=sort sort_in_consolidate_order @unsorted_list;
+
+Sorts a list of Data::Range::Compare objects in the order required for range consolidation.
+
+=item * @list=sort sort_largest_range_end_first @unsorted_list;
+
+Sorts a list Data::Range::Compare objects by range_end in descending order.
+
+=item * @list=sort sort_smallest_range_start_first @unsorted_list;
+
+Sorts a list Data::Range::Compare objects by range_start in ascending order.
+
+=item * @list=sort sort_smallest_range_end_first @unsorted_list;
+
+Sorts a list Data::Range::Compare objects by range_end in ascending order.
+
+=item * @list=sort sort_largest_range_start_first @unsorted_list;
+
+Sorts a list Data::Range::Compare objects by range_start in descending order.
+
+=back
+
+=head1 AUTHOR
+
+Michael Shipper
+
+=head1 COPYRIGHT
+
+Copyright 2010 Michael Shipper.  All rights reserved.
+
+This library is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+=cut
+
