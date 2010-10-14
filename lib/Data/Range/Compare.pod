@@ -34,9 +34,9 @@ Data::Range::Compare - Framework for calculating range intersections
 
 =head1 DESCRIPTION
 
-This package is a extensible framework for finding intersections between two dimensional ranges of data.
+This package is a universal framework for finding intersections in data representing ranges.  The Ranges simply need to be two dimensional.
 
-Data::Range::Compare is not intended to be used directly although you can.  For the most part it is intended to be subclassed by other packages.
+Data::Range::Compare is not intended to be used directly although it can be.  For the most part Data::Range::Compare is intended to be subclassed by other packages.
 
 =head2 Export list
 
