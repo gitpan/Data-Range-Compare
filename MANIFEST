@@ -12,7 +12,14 @@ t/process.t
 t/sort_funcs.t
 t/start_end.t
 t/subclass.t
+examples/Recipe_subclass_a_to_z.pl
+examples/a_to_z.pm
+examples/example_a.pl
+examples/example_a_to_z.pl
 lib/Data/Range/Compare.pm
 lib/Data/Range/Compare.pod
+lib/Data/Range/Compare/Cookbook.pm
+lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pm
+lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pm
 examples/example_a.pl
 META.yml                                 Module meta-data (added by MakeMaker)
