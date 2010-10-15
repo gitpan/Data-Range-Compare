@@ -10,11 +10,11 @@ Data::Range::Compare::Cookbook --  Tutorials and Recipes
 
 =over 3
 
-=item * Data::Range::Compare::Cookbook::Recipe_a_to_z
+=item L<Data::Range::Compare::Cookbook::Recipe_a_to_z> - the "a to z" example
 
 This recipe is a basic tutorial on how to use the Data::Range::Compare framework to manipulate ranges, using a .. z as the range example.
 
-=item * Data::Range::Compare::Cookbook::Recipe_subclass_a_to_z
+=item L<Data::Range::Compare::Cookbook::Recipe_subclass_a_to_z> - subclassing "a to z"
 
 This recipe builds on Data::Range::Compare::Cookbook::Recipe_a_to_z and demonstrates how to subclass Data::Range::Compare in a new module and provides a demo script explaining how to use the new module.
 

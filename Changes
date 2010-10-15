@@ -1,14 +1,18 @@
 
 RCS file: /home/cvs/perl/Data-Range-Compare/Changes,v
 Working file: Changes
-head: 1.2
+head: 1.3
 branch:
 locks: strict
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 2;	selected revisions: 2
+total revisions: 3;	selected revisions: 3
 description:
+----------------------------
+revision 1.3
+date: 2010-10-13 23:15:34 -0400;  author: wicket;  state: Exp;  lines: +22 -6;  commitid: 5HNaeLG0NxfRgmSu;
+rolling in changes
 ----------------------------
 revision 1.2
 date: 2010-10-13 22:49:18 -0400;  author: wicket;  state: Exp;  lines: +326 -4;  commitid: ua92eDXLLrMQ7mSu;
@@ -21,14 +25,26 @@ checking everything in for the first time
 
 RCS file: /home/cvs/perl/Data-Range-Compare/MANIFEST,v
 Working file: MANIFEST
-head: 1.3
+head: 1.6
 branch:
 locks: strict
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 3;	selected revisions: 3
+total revisions: 6;	selected revisions: 6
 description:
+----------------------------
+revision 1.6
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: Exp;  lines: +3 -3;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+----------------------------
+revision 1.5
+date: 2010-10-14 18:38:59 -0400;  author: wicket;  state: Exp;  lines: +5 -0;  commitid: BpXLpEYCCyOYHsSu;
+rolling in MANIFEST update
+----------------------------
+revision 1.4
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  lines: +2 -0;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
 ----------------------------
 revision 1.3
 date: 2010-10-13 22:46:23 -0400;  author: wicket;  state: Exp;  lines: +1 -0;  commitid: Tfb8UfIAKquQ6mSu;
@@ -103,6 +119,38 @@ date: 2010-10-13 17:56:52 -0400;  author: wicket;  state: Exp;  commitid: T6dwiI
 checking everything in for the first time
 =============================================================================
 
+RCS file: /home/cvs/perl/Data-Range-Compare/examples/Recipe_subclass_a_to_z.pl,v
+Working file: examples/Recipe_subclass_a_to_z.pl
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/examples/a_to_z.pm,v
+Working file: examples/a_to_z.pm
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+=============================================================================
+
 RCS file: /home/cvs/perl/Data-Range-Compare/examples/example_a.pl,v
 Working file: examples/example_a.pl
 head: 1.1
@@ -119,16 +167,40 @@ date: 2010-10-13 22:44:43 -0400;  author: wicket;  state: Exp;  commitid: SNgLIJ
 Example added
 =============================================================================
 
-RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare.pm,v
-Working file: lib/Data/Range/Compare.pm
-head: 1.3
+RCS file: /home/cvs/perl/Data-Range-Compare/examples/example_a_to_z.pl,v
+Working file: examples/example_a_to_z.pl
+head: 1.1
 branch:
 locks: strict
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 3;	selected revisions: 3
+total revisions: 1;	selected revisions: 1
 description:
+----------------------------
+revision 1.1
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare.pm,v
+Working file: lib/Data/Range/Compare.pm
+head: 1.5
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 5;	selected revisions: 5
+description:
+----------------------------
+revision 1.5
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: Exp;  lines: +1 -1;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+----------------------------
+revision 1.4
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  lines: +1 -1;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
 ----------------------------
 revision 1.3
 date: 2010-10-13 23:05:06 -0400;  author: wicket;  state: Exp;  lines: +1 -1;  commitid: jHTqDLwADfNgdmSu;
@@ -145,14 +217,18 @@ checking everything in for the first time
 
 RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare.pod,v
 Working file: lib/Data/Range/Compare.pod
-head: 1.6
+head: 1.7
 branch:
 locks: strict
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 6;	selected revisions: 6
+total revisions: 7;	selected revisions: 7
 description:
+----------------------------
+revision 1.7
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  lines: +47 -4;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
 ----------------------------
 revision 1.6
 date: 2010-10-13 23:05:06 -0400;  author: wicket;  state: Exp;  lines: +2 -2;  commitid: jHTqDLwADfNgdmSu;
@@ -177,6 +253,118 @@ package is almost ready for release
 revision 1.1
 date: 2010-10-13 18:10:53 -0400;  author: wicket;  state: Exp;  commitid: AGSQpPNhL1DiAkSu;
 adding the base pod
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Attic/Cookbook.pm,v
+Working file: lib/Data/Range/Compare/Cookbook.pm
+head: 1.3
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 3;	selected revisions: 3
+description:
+----------------------------
+revision 1.3
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: dead;  lines: +0 -0;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+----------------------------
+revision 1.2
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  lines: +15 -3;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+----------------------------
+revision 1.1
+date: 2010-10-14 15:34:58 -0400;  author: wicket;  state: Exp;  commitid: USn8XTbqjH1MGrSu;
+Adding the first cookbook file
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Cookbook.pod,v
+Working file: lib/Data/Range/Compare/Cookbook.pod
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: Exp;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Cookbook/Attic/Recipe_a_to_z.pm,v
+Working file: lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pm
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: dead;  lines: +0 -0;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+----------------------------
+revision 1.1
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pod,v
+Working file: lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pod
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: Exp;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Cookbook/Attic/Recipe_subclass_a_to_z.pm,v
+Working file: lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pm
+head: 1.2
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 2;	selected revisions: 2
+description:
+----------------------------
+revision 1.2
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: dead;  lines: +0 -0;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
+----------------------------
+revision 1.1
+date: 2010-10-14 18:31:24 -0400;  author: wicket;  state: Exp;  commitid: 6oGXCom4tQAnFsSu;
+rolling in new documentation
+=============================================================================
+
+RCS file: /home/cvs/perl/Data-Range-Compare/lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pod,v
+Working file: lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pod
+head: 1.1
+branch:
+locks: strict
+access list:
+symbolic names:
+keyword substitution: kv
+total revisions: 1;	selected revisions: 1
+description:
+----------------------------
+revision 1.1
+date: 2010-10-14 20:52:16 -0400;  author: wicket;  state: Exp;  commitid: 1NjB7vXhwITHrtSu;
+updateing the documentation
 =============================================================================
 
 RCS file: /home/cvs/perl/Data-Range-Compare/t/Constructor.t,v
