@@ -2,6 +2,11 @@ Changes
 Makefile.PL
 MANIFEST
 README
+lib/Data/Range/Compare.pm
+lib/Data/Range/Compare.pod
+lib/Data/Range/Compare/Cookbook.pod
+lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pod
+lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pod
 t/Constructor.t
 t/Data-Range-Compare.t
 t/cmp_ops.t
@@ -12,14 +17,9 @@ t/process.t
 t/sort_funcs.t
 t/start_end.t
 t/subclass.t
+examples/example_a.pl
 examples/Recipe_subclass_a_to_z.pl
 examples/a_to_z.pm
 examples/example_a.pl
 examples/example_a_to_z.pl
-lib/Data/Range/Compare.pm
-lib/Data/Range/Compare.pod
-lib/Data/Range/Compare/Cookbook.pod
-lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pod
-lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pod
-examples/example_a.pl
 META.yml                                 Module meta-data (added by MakeMaker)

@@ -1,3 +1,6 @@
+
+=pod
+
 =head1 NAME
 
 Data::Range::Compare - Framework for calculating range intersections

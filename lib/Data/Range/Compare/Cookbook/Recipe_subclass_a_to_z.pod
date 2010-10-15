@@ -1,12 +1,15 @@
+
+=pod
+
 =head1 NAME
 
-Data::Range::Compare::Cookbook:Recipe_subclass_a_to_z
+Data::Range::Compare::Cookbook:Recipe_subclass_a_to_z - Suclassing the "a to z" example
 
 =head1 SYNOPSIS
 
 This recipe builds on the a to z recipe but adds a basic example of how to subclass Data::Range::Compare.
 
-=head1 Creating the module
+=head2 Creating the module
 
 This section contains the example source code used to create a_to_z.pm
 
@@ -56,8 +59,8 @@ This section contains the example source code used to create a_to_z.pm
   }
 
   1;
-  
-=head1 Using a_to_z.pm
+
+=head2 Using a_to_z.pm
 
 Now you can create a perl script to load a_to_z and use the simplified functionality.
 
@@ -123,3 +126,4 @@ Michael Shipper
 Data::Range::Compare::Cookbook perlboot
 
 =cut
+

@@ -1,6 +1,9 @@
+
+=pod
+
 =head1 NAME
 
-Data::Range::Compare::Cookbook -- Tutorial a to z example
+Data::Range::Compare::Cookbook::Recipe_a_to_z - Tutorial a to z example
 
 =head1 SYNOPSIS
 
@@ -90,7 +93,7 @@ Data::Range::Compare::Cookbook -- Tutorial a to z example
 
 =head1 DESCRIPTION
 
-This recipe demonstrates how to use the Data::Range::Compare package to manipulate ranges represented as lettters a-z.
+Simple HOWTO demonstrating range manipulation with letters from the alphabet.
 
 =head1 AUTHOR
 
