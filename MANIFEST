@@ -7,6 +7,7 @@ lib/Data/Range/Compare.pod
 lib/Data/Range/Compare/Cookbook.pod
 lib/Data/Range/Compare/Cookbook/Recipe_a_to_z.pod
 lib/Data/Range/Compare/Cookbook/Recipe_subclass_a_to_z.pod
+lib/Data/Range/Compare/Cookbook/Instance_and_Constants.pod
 t/Constructor.t
 t/Data-Range-Compare.t
 t/cmp_ops.t
