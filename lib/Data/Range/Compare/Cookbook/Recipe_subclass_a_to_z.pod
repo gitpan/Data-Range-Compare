@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-Data::Range::Compare::Cookbook:Recipe_subclass_a_to_z - subclassing "a to z"
+Data::Range::Compare::Cookbook::Recipe_subclass_a_to_z - subclassing "a to z"
 
 =head1 SYNOPSIS
 
@@ -125,14 +125,14 @@ Simple example demonstrating HOWTO subclass the "a to z" example
 
 Michael Shipper
 
-=head1d1 COPYRIGHT
+=head1 COPYRIGHT
 
 Copyright 2010 Michael Shipper.  All rights reserved.
 
 This library is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 
-=SEE ALSO
+=head1 SEE ALSO
 
 Data::Range::Compare::Cookbook perlboot
 

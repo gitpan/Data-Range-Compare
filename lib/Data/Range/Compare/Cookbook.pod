@@ -23,6 +23,10 @@ This recipe is a basic tutorial on how to use the Data::Range::Compare framework
 
 This recipe builds on Data::Range::Compare::Cookbook::Recipe_a_to_z and demonstrates how to subclass Data::Range::Compare in a new module and provides a demo script explaining how to use the new module.
 
+=item L<Data::Range::Compare::Cookbook::Instance_and_Constants> - Look inside the instance
+
+This recipe explains how to extend an instance of Data::Range::Compare in module that sublclasses it.
+
 =back
 
 =head1 AUTHOR
