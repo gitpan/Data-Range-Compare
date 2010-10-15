@@ -127,7 +127,7 @@ Simple example demonstrating HOWTO subclass the "a to z" example
 
 =head2 CONSTANTS
 
-Data::Range::Compare instances are array refrences, and use numeric entries to identify each element.
+Data::Range::Compare instances are array references and use numeric entries to identify each element.
 
 =over 4
 
@@ -139,31 +139,31 @@ This constant represents the position of \%helper in the array instance.
 
 =item * key_start
 
-This constant represents the position of $start in the instance.
+This constant represents the position of $start in this instance.
 
   The value of key_start is 1
 
 =item * key_end
 
-This constant represents the position of $end in the the instance.
+This constant represents the position of $end in this instance.
 
   The value of key_end is 2
 
 =item * key_generated
 
-This constant represents the position of $generated in the the instance.
+This constant represents the position of $generated in this instance.
 
   The value of key_generated is 3
 
 =item * key_missing
 
-This constant represents the position of $missing in the the instance.
+This constant represents the position of $missing in this instance.
 
   The value of key_missing is 4
 
 =item * key_key_data
 
-This constant represents the position of $key_data in the the instance.
+This constant represents the position of $key_data in this instance.
 
   The value of key_key_data is 5
 

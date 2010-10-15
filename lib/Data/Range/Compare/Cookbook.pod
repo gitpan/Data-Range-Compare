@@ -17,7 +17,7 @@ This Data::Range::Compare Cookbook shows various solutions to common range manip
 
 =item L<Data::Range::Compare::Cookbook::Recipe_a_to_z> - the "a to z" example
 
-This recipe is a basic tutorial on how to use the Data::Range::Compare framework to manipulate ranges, using a .. z as the range example.
+This recipe is a basic tutorial on how to use the Data::Range::Compare framework to manipulate ranges using a .. z as the range example.
 
 =item L<Data::Range::Compare::Cookbook::Recipe_subclass_a_to_z> - subclassing "a to z"
 
@@ -25,7 +25,7 @@ This recipe builds on Data::Range::Compare::Cookbook::Recipe_a_to_z and demonstr
 
 =item L<Data::Range::Compare::Cookbook::Instance_and_Constants> - Look inside the instance
 
-This recipe explains how to extend an instance of Data::Range::Compare in module that sublclasses it.
+This recipe explains how to extend an instance of Data::Range::Compare in a module that sublclasses it.
 
 =back
 
@@ -42,7 +42,7 @@ modify it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-perldoc
+Data::Range::Compare
 
 =cut
 
