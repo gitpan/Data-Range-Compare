@@ -6,7 +6,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use overload '""'=>\&notation ,fallback=>1;
 
 require Exporter;
-$VERSION=1.016;
+$VERSION=1.018;
 
 @ISA=qw(Exporter);
 

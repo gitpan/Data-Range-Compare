@@ -41,6 +41,8 @@ This package is a universal framework for finding intersections in data represen
 
 Data::Range::Compare is not intended to be used directly although it can be.  For the most part Data::Range::Compare is intended to be subclassed by other packages.
 
+For a list of more detailed examples, check out the cookbook.
+
 =head2 Export list
 
 :KEYS
@@ -71,33 +73,25 @@ Data::Range::Compare is not intended to be used directly although it can be.  Fo
   sort_in_consolidate_order
   sort_in_presentation_order
 
+=head2 %helper
 
-=head2 OO Methods
+%helper is the primary driver for this framework.
 
-This section covers the OO Methods in the package
+Data::Range::Compare relies on %helper to do its internal work.  So this section explains how populate %helper to work with DateTime.
+  
+  
+  # to import the default %helper functions into your package
+  use Data::Range::Compare qw(:HELPER);
 
-=over 3
+  my %helper=(
+    add_one=>\&add_one
+    sub_one=>\&sub_one
+    cmp_values=>\&cmp_values
+  );
 
-=item * my $range=new Data::Range::Compare(\%helper,0,1);
+=over 4 
 
-=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated);
-
-=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated,$missing);
-
-This function acts as the general package constructor.  
-
-$generated represents the $range->generated state
-
-$missing represents the $range->missing state
-
-%helper should contain the following key=>code_refs.
-
-  add_one=>\&add_one
-  sub_one=>\&sub_one
-  cmp_values=>\&cmp_values
-
-
-add_one
+=item * add_one
 
 This function accepts 1 argument and returns the next thing.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
 
@@ -129,7 +123,7 @@ This function accepts 1 argument and returns the next thing.  If you are impleme
   my $next=$helper{add_one}->('a');
   $next eq 'b';
 
-sub_one
+=item * sub_one
 
 This function accepts 1 argument and returns the next thing.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
 
@@ -161,7 +155,7 @@ This function accepts 1 argument and returns the next thing.  If you are impleme
   my $next=$helper{sub_one}->('a');
   $next eq 'b';
 
-cmp_values
+=item * cmp_values
 
 This function accepts 2 arguments and should return one of the following values: 0,-1,1
 
@@ -181,6 +175,34 @@ Examples:
   $helper{cmp_values}=sub {$_[0] cmp $_[1] };
   my $cmp=$helper{cmp_values}->(qw(a b));
   $cmp==-1;
+
+=back
+
+=head2 OO Methods
+
+This section covers the OO Methods in the package
+
+=over 3
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1);
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated);
+
+=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated,$missing);
+
+=item * my $range=Data::Range::Compare->new(\%helper,0,1);
+
+=item * my $range=Data::Range::Compare->new(\%helper,0,1,$generated);
+
+=item * my $range=Data::Range::Compare->new(\%helper,0,1,$generated,$missing);
+
+This function acts as the general package constructor.  
+
+$generated represents the $range->generated state
+
+$missing represents the $range->missing state
+
+%helper is what drives the internals of our instance.
 
 =item * my $value=$range->helper_cb('add_one',1)
 

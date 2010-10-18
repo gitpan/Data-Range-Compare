@@ -27,6 +27,10 @@ This recipe builds on Data::Range::Compare::Cookbook::Recipe_a_to_z and demonstr
 
 This recipe explains how to extend an instance of Data::Range::Compare in a module that sublclasses it.
 
+=item L<Data::Range::Compare::Cookbook::Recipe_DateTime> - DateTime Range HOWTO
+
+This recipe explains how to manipulate DateTime ranges.
+
 =back
 
 =head1 AUTHOR

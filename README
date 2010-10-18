@@ -10,6 +10,10 @@ To install this module type the following:
    make test
    make install
 
+EXAMPLE SCRIPTS
+
+examples/
+
 COPYRIGHT AND LICENCE
 
 Copyright (C) 2010 by Michael Shipper
