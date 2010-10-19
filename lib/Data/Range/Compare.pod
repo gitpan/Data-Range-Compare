@@ -77,7 +77,7 @@ For a list of more detailed examples, check out the cookbook.
 
 %helper is the primary driver for this framework.
 
-Data::Range::Compare relies on %helper to do its internal work.  So this section explains how populate %helper to work with DateTime.
+Data::Range::Compare relies on %helper to do its internal work.  So this section explains how populate %helper.
   
   
   # to import the default %helper functions into your package

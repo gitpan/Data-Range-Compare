@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Data-Range-Compare
-version:             1.02
+version:             1.022
 abstract:            Framework for calculating range intersections
 license:             ~
 author:              
