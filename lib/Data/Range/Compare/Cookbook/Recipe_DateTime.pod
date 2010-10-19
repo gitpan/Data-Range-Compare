@@ -187,7 +187,7 @@ This example relies on L<DateTime>.
 
 =head2 Creating %helper
 
-Data::Range::Compare relies on %helper to do its internal work.  So this section explains how to populate %helper to work with DateTime.
+Data::Range::Compare relies on %helper to do its internal work.  This section explains how to populate %helper to work with DateTime.
 
 Create a hash %helper.
 
@@ -199,7 +199,7 @@ Example
 
 =item * Creating the "cmp_values" callback
 
-"cmp_values" represents comparing 2 objects in the standard cmp or <=> way, lucky for us DateTime provides a comparative interface.
+"cmp_values" represents comparing 2 objects in the standard cmp or <=> way; lucky for us DateTime provides a comparative interface.
 
 Example
 
@@ -211,7 +211,7 @@ Example
 
 =item * Creating the "add_one" callback
 
-"add_one" represents the next value:  With that in mind we have to do decide if our next increment is just adding 1 or moving to the next Year, Month, Day, Hour, Min, Sec etc.
+"add_one" represents the next value:  With that in mind we have to decide if our next increment is just adding 1 or moving to the next Year, Month, Day, Hour, Min, Sec etc.
 
 In our example we will be using the concept of next second.  This makes "add_one" a fairly simple function to implement.
 
@@ -227,9 +227,9 @@ Example
 =item * Creating the "sub_one" callback
 
 
-"add_one" represents the previous value.  With that in mind we have to do decide if our next decrement is just removing 1 or moving to the previous Year, Month, Day, Hour, Min, Sec etc.
+"add_one" represents the previous value.  With that in mind we have to decide if our next decrement is just removing 1 or moving to the previous Year, Month, Day, Hour, Min, Sec etc.
 
-In our example we will be using the concept of previous second.  This makes out "sub_one" a fairly simple function to implement.
+In our example we will be using the concept of previous second.  This makes "sub_one" a fairly simple function to implement.
 
 Example
 
@@ -277,13 +277,13 @@ Now we really get down to the details of the outage.  So lets examine this code 
 
 This is where the process for comparison starts.  We created the object that will compare and iterate through our @parsed ranges.
 
-Ok, that said lets take a look at the logic of our while loop.
+Ok, that said let's take a look at the logic of our while loop.
 
   while(my ($vpn_a,$vpn_b,$vpn_c)=$sub->()) {
 
 If you look back at the foreach call we made, you will notice our iteration through each set of outage related data.  Each anonymous array @parsed represents in order: @vpn_a @vpn_b @vpn_c.
 
-Our call to $sub->() is only slightly different than the data in @parsed the variables in $vpn_a,$vpn_b,$vpn_c may not even exist in \@parsed and that's because they represent ranges not found in a given list data source.  Witch brings us to the ->missing checks.
+Our call to $sub->() is only slightly different than the data in @parsed.  The variables in $vpn_a,$vpn_b,$vpn_c may not even exist in @parsed and that's because they represent ranges not found in a given list data source which brings us to the ->missing checks.
 
   next unless
     !$vpn_a->missing
@@ -296,7 +296,7 @@ This is a some what awkward way of looking at the data, but in reality it makes 
 
 =item * my $common=Data::Range::Compare->get_common_range( \%helper ,[$vpn_a,$vpn_c,$vpn_b] );
 
-We are using Data::Range::Compare->get_common_range to calculate the smallest common range given all of our current ranges.  We only care about the shard down time from every single range.
+We are using Data::Range::Compare->get_common_range to calculate the smallest common range given all of our current ranges.  We only care about the shared down time from every single range.
 
 =item * my $outage=$common->range_end->subtract_datetime( $common->range_start );
 This is a feature of DateTime itself and we used it to fetch the duration of the outage.
