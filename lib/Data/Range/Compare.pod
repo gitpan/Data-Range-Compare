@@ -385,6 +385,12 @@ Data::Range::Compare::Cookbook
 
 Michael Shipper
 
+=head1 SourceForge Project
+
+As of version 1.026 the Project has been moved to SourceForge.net
+
+L<Data Range Compare|https://sourceforge.net/projects/data-range-comp/>
+
 =head1 COPYRIGHT
 
 Copyright 2010 Michael Shipper.  All rights reserved.
