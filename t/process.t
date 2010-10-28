@@ -2,7 +2,7 @@
 
 # change 'tests => 1' to 'tests => last_test_to_print';
 
-use Test::More tests => 15;
+use Test::More tests => 73;
 use strict;
 use warnings;
 use lib qw(../lib lib);
@@ -91,6 +91,167 @@ my %helper=HELPER_CB;
   $check=join(', ',@$row);
   ok($check eq '2 - 7, 4 - 7, 3 - 7','compare_row 2');
   ok(!$next,'next check 4');
+}
+## new set of compare row data
+## found this issue when porting the code to php
+{
+   my $data=[
+     # 1
+     [
+       Data::Range::Compare->new(\%helper,0,1)
+     ]
+
+     # 2
+     ,[
+       Data::Range::Compare->new(\%helper,0,1)
+       ,
+       Data::Range::Compare->new(\%helper,2,3)
+     ]
+
+     # 3
+     ,[
+       Data::Range::Compare->new(\%helper,5,6)
+     ]
+
+     # 4
+     ,[
+       Data::Range::Compare->new(\%helper,0,6)
+     ]
+
+   ];
+   my ($row,$cols,$next)=$s->init_compare_row(\%helper,$data);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==0,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '0 - 1, 0 - 1, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 2 - 3, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 4 - 6, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok(!$next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==0,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 4 - 6, 5 - 6, 0 - 6'
+     ,'check the sanity of the row');
+
+}
+{
+   my $data=[
+     # 1
+     [
+       Data::Range::Compare->new(\%helper,0,1)
+     ]
+
+     # 2
+     ,[
+       Data::Range::Compare->new(\%helper,0,1)
+       ,
+       Data::Range::Compare->new(\%helper,2,2)
+     ]
+
+     # 3
+     ,[
+       Data::Range::Compare->new(\%helper,5,6)
+     ]
+
+     # 4
+     ,[
+       Data::Range::Compare->new(\%helper,0,6)
+     ]
+
+   ];
+   my ($row,$cols,$next)=$s->init_compare_row(\%helper,$data);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==0,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '0 - 1, 0 - 1, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 2 - 2, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==-1,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 3 - 6, 0 - 4, 0 - 6'
+     ,'check the sanity of the row');
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok(!$next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==0,'checking column 3');
+   ok($cols->[3]==0,'checking coumn 4');
+   ok(join(', ',@$row) eq '2 - 6, 3 - 6, 5 - 6, 0 - 6'
+     ,'check the sanity of the row');
+
+}
+{
+   my $data=[
+     # 1
+     [
+       Data::Range::Compare->new(\%helper,0,1)
+       ,Data::Range::Compare->new(\%helper,4,5)
+     ]
+
+     # 2
+     ,[
+       Data::Range::Compare->new(\%helper,0,1)
+       ,
+       Data::Range::Compare->new(\%helper,4,5)
+     ]
+
+     # 3
+     ,[
+       Data::Range::Compare->new(\%helper,0,1)
+       ,
+       Data::Range::Compare->new(\%helper,4,5)
+     ]
+
+   ];
+   my ($row,$cols,$next)=$s->init_compare_row(\%helper,$data);
+   ok($next,'should be a next value');
+   ok($cols->[0]==0,'checking column 1');
+   ok($cols->[1]==0,'checking column 2');
+   ok($cols->[2]==0,'checking column 3');
+   ok(join(', ',@$row) eq '0 - 1, 0 - 1, 0 - 1'
+     ,'check the sanity of the row');
+
+  ($row,$cols,$next)=$s->compare_row(\%helper,$data,$row,$cols);
+   ok(!$next,'should be no next value');
+   ok($cols->[0]==1,'checking column 1');
+   ok($cols->[1]==1,'checking column 2');
+   ok($cols->[2]==1,'checking column 3');
+   ok(join(', ',@$row) eq '4 - 5, 4 - 5, 4 - 5'
+     ,'check the sanity of the row');
 }
 ## wrapper range_compare
 {

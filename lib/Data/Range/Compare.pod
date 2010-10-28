@@ -78,8 +78,8 @@ For a list of more detailed examples, check out the cookbook.
 %helper is the primary driver for this framework.
 
 Data::Range::Compare relies on %helper to do its internal work.  So this section explains how to populate %helper.
-  
-  
+
+
   # to import the default %helper functions into your package
   use Data::Range::Compare qw(:HELPER);
 
@@ -390,6 +390,7 @@ Michael Shipper
 As of version 1.026 the Project has been moved to SourceForge.net
 
 L<Data Range Compare|https://sourceforge.net/projects/data-range-comp/>
+L<https://sourceforge.net/projects/data-range-comp/>
 
 =head1 COPYRIGHT
 

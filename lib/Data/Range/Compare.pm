@@ -6,7 +6,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use overload '""'=>\&notation ,fallback=>1;
 
 require Exporter;
-$VERSION=1.026;
+$VERSION=1.027;
 
 @ISA=qw(Exporter);
 
@@ -158,15 +158,11 @@ sub contiguous_check ($) {
 
 sub cmp_ranges ($) {
   my ($range_a,$range_b)=@_;
-  return 0 if 
-    $range_a->cmp_range_start($range_b)==0
-    and
-    $range_a->cmp_range_end($range_b)==0;
-
-  $range_a->cmp_range_start($range_b)
-  ||
-  $range_a->cmp_range_end($range_b)
-
+  my $cmp=$range_a->cmp_range_start($range_b);
+  if($cmp==0) {
+    return $range_a->cmp_range_end($range_b);
+  }
+  return $cmp;
 }
 
 sub HELPER_CB () {
@@ -444,16 +440,11 @@ sub compare_row {
       }
     }
     ++$missing_count if $row->[$id]->missing;
+    --$ok if $row->[$id]->cmp_range_end($end)>=0;
   }
-  $class->compare_row($helper,$data,$row,$cols) if $missing_count==$total;
-  for(my $id=0;$id<$total;++$id) {
-  	# reduce our ok umber by every row maxed
-  	--$ok if $cols->[$id]==$#{$data->[$id]};
-	# we may have reached the end of our list, but that may
-	# not be final row
-	++$ok unless $row->[$id]->cmp_range_end($end)==0;
-  }
-  $row,$cols,$ok
+  return $class->compare_row($helper,$data,$row,$cols) 
+      if $ok and $missing_count==$total;
+  ($row,$cols,$ok)
 }
 
 1;

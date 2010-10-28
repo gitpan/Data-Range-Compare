@@ -2,3 +2,7 @@ Change log file for data-range-comp
 
 1.026
   Moved the repository to SourceForge
+
+1.027
+  bug fix for cmp_ranges
+  bug fix for compare_row
