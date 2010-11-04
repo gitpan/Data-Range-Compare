@@ -6,67 +6,62 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 use overload '""'=>\&notation ,fallback=>1;
 
 require Exporter;
-$VERSION=1.027;
+$VERSION=1.028;
 
 @ISA=qw(Exporter);
 
-use constant key_helper=>0;
-use constant key_start=>1;
-use constant key_end =>2;
-use constant key_generated=>3;
-use constant key_missing=>4;
-use constant key_data=>5;
+use constant key_helper    => 0;
+use constant key_start     => 1;
+use constant key_end       => 2;
+use constant key_generated => 3;
+use constant key_missing   => 4;
+use constant key_data      => 5;
 
-push @EXPORT_OK,qw(
+@EXPORT_OK=qw(
   key_helper
   key_start
   key_end
   key_generated
   key_missing
   key_data
-);
 
-$EXPORT_TAGS{KEYS}=[qw(
-  key_helper
-  key_start
-  key_end
-  key_generated
-  key_missing
-  key_data
-)];
-
-$EXPORT_TAGS{ALL}=\@EXPORT_OK;
-
-$EXPORT_TAGS{HELPER_CB}=[qw(HELPER_CB)];
-push @EXPORT_OK,qw(
-  HELPER_CB
-);
-
-push @EXPORT_OK, qw(
   add_one 
   sub_one 
   cmp_values
-);
 
-$EXPORT_TAGS{HELPER}=[qw(add_one sub_one cmp_values)];
-
-push @EXPORT_OK,qw(
   sort_largest_range_end_first
   sort_largest_range_start_first
   sort_smallest_range_start_first
   sort_smallest_range_end_first
   sort_in_consolidate_order
   sort_in_presentation_order
+
+  HELPER_CB
 );
 
-$EXPORT_TAGS{SORT}=[qw(
-  sort_largest_range_end_first
-  sort_largest_range_start_first
-  sort_smallest_range_start_first
-  sort_smallest_range_end_first
-  sort_in_consolidate_order
-  sort_in_presentation_order
-)];
+%EXPORT_TAGS=(
+  KEYS=>[qw(
+ 	  key_helper
+          key_start
+          key_end
+          key_generated
+          key_missing
+          key_data
+  )]
+
+  ,ALL=>\@EXPORT_OK
+
+  ,HELPER_CB=>[qw(HELPER_CB)]
+  ,HELPER=>[qw(add_one sub_one cmp_values)]
+  ,SORT=>[qw(
+    sort_largest_range_end_first
+    sort_largest_range_start_first
+    sort_smallest_range_start_first
+    sort_smallest_range_end_first
+    sort_in_consolidate_order
+    sort_in_presentation_order
+   )]
+);
 
 sub new {
   my $s=shift @_;
@@ -132,6 +127,16 @@ sub overlap ($) {
       )!=-1;
 
   undef
+}
+
+sub grep_overlap ($) { [ grep {$_[0]->overlap($_) } @{$_[1]} ] }
+sub grep_nonoverlap ($) { [ grep { $_[0]->overlap($_) ? 0 : 1 } @{$_[1]} ] }
+
+sub contains_value ($) {
+  my ($s,$cmp)=@_;
+  return 0 if $s->helper_cb('cmp_values',$s->range_start,$cmp)==1;
+  return 0 if $s->helper_cb('cmp_values',$cmp,$s->range_end)==1;
+  1
 }
 
 sub next_range_start () { $_[0]->helper_cb('add_one',$_[0]->range_end)  }

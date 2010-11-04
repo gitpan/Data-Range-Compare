@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-Data::Range::Compare - Framework for calculating range intersections
+Data::Range::Compare - Find gaps and intersections in ranges
 
 =head1 SYNOPSIS
 
@@ -37,43 +37,199 @@ Data::Range::Compare - Framework for calculating range intersections
 
 =head1 DESCRIPTION
 
-This package is a universal framework for finding intersections in data representing ranges.  The Ranges simply need to be two dimensional.
+This package provides a universal framework for calculating the intersections and gaps in/of 2 dimensional ranges.
 
-Data::Range::Compare is not intended to be used directly although it can be.  For the most part Data::Range::Compare is intended to be subclassed by other packages.
+=head2 Getting Started
 
-For a list of more detailed examples, check out the cookbook.
+In order to use this package on your data, you will need to create 3 functions to handle computations of your data.
 
-=head2 Export list
+=over 4
 
-:KEYS
+=item * Compare start and end values
 
-  key_helper
-  key_start
-  key_end
-  key_generated
-  key_missing
-  key_data
+Objects that make up the start and end of your range can be made up of any object in PERL that can be represented in a scalar context.
 
-:HELPER_CB
+Lets say we want to compute the intersection 
+of the following numeric ranges.
 
-  HELPER_CB
+  Example:
 
-:HELPER
+    Range list a:
 
-  add_one
-  sub_one
-  cmp_values
+     1) 1 to 2
+     2) 2 to 3
 
-:SORT
+    Range list b:
 
-  sort_largest_range_end_first
-  sort_largest_range_start_first
-  sort_smallest_range_start_first
-  sort_smallest_range_end_first
-  sort_in_consolidate_order
-  sort_in_presentation_order
+     1) 0 to 1
+     2) 2 to 7
 
-=head2 %helper
+    So lets create our function to compare values.
+
+    sub compare_two_values ($$)
+    {
+       my ($value_a,$value_b)=@_;
+       return $value_a <=> $value_b;
+    }
+
+
+    This function will safely compare the start and or 
+    end values of our ranges.
+
+But what happens if we want to compare ranges that are represented by letters of the alphabet?
+
+  Example:
+
+    Range list a:
+
+     1) b to c
+     2) c to d
+
+    Range list b:
+
+     1) a to b
+     2) c to h
+
+   So lets create a function that can compare the start and end 
+   values of our ranges.
+
+    sub compare_two_values ($$)
+    {
+       my ($value_a,$value_b)=@_;
+       return $value_a cmp $value_b;
+    }
+
+    Note: This function is slightly different than our original 
+    function as we have swapped out the "<=>" operator for the 
+    "cmp" operator.  This function will now safely compare the 
+    start and end value of our ranges.
+
+
+=item * Computing the next value
+
+Since we can now compare start and end values of our ranges we need to be able to compute the next value.
+
+Given our numeric ranges from the "Compare start and end values" its very simple to create a function to compute the next value.
+
+Example:
+
+  Now we need to create a function to compute the next given
+  value from a start or end range value.
+
+    Range list a:
+
+     1) 1 to 2
+     2) 2 to 3
+
+    Range list b:
+
+     1) 0 to 1
+     2) 2 to 7
+
+   A function that can compute the next value in the case of
+   numeric ranges is as simple as creating a function that just
+   adds 1 to what ever number is passed into the function.
+
+   sub add_one ($) 
+   {
+     return $_[0] + 1;
+   }
+
+   So if we wanted to compute the start of the next range for 
+   set a - 1 we would get a return value of 3.
+
+
+But what about our ranges represented in letters of the alphabet?
+Since we can't simply add one to compute the value of the start of
+the next range, we will have to create some code that can compute
+the next letter of the alphabet.
+
+Example:
+
+    Range list a:
+
+     1) b to c
+     2) c to d
+
+    Range list b:
+
+     1) a to b
+     2) c to h
+
+  sub my_add_one {
+    my @list=('a' .. 'z');
+    my $id=-1; 
+    my %ids=map { ($_,++$id) } @list;
+
+    my $here=$ids{$_[0]};
+    ++$here;
+    return 'z' if $#list<$here;
+    $list[$here]
+  }
+
+
+  This function can now compute the beginning of the next range.
+  So if we wanted to compute the start of the next range for 
+  set a - 1 we would get a return value of d.
+
+
+=item * Computing the Previous value
+
+Now that we can compare range start/end values and compute the next value from a start or end value we need to be able to calculate a previous value.
+
+Example:
+
+    Range list a:
+
+     1) 1 to 2
+     2) 2 to 3
+
+    Range list b:
+
+     1) 0 to 1
+     2) 2 to 7
+
+  Once again creating a function to compute the previous value
+  based on a start or end value is very easy when we are dealing
+  with numeric ranges.
+
+  sub calculate_previous_value ($) { 
+    return $_[0] -1;
+  }
+
+  Given set a - 1 start value our return value would be 0.
+
+
+Once again this works fine for numeric ranges, but how would we calculate the previous range for a ranges represented by letters of the alphabet?
+
+Example: 
+    Range list a:
+
+     1) b to c
+     2) c to d
+
+    Range list b:
+
+     1) a to b
+     2) c to h
+
+  sub my_sub_one {
+    # a-z example
+    my @list=('a' .. 'z');
+    my $id=-1; 
+    my %ids=map { ($_,++$id) } @list;
+
+    my $here=$ids{$_[0]};
+    --$here;
+    return 'z' if 0>$here;
+    $list[$here]
+  }
+
+  So given set a - 1 our return value would be a.
+
+=back
+
+=head3 Putting it all together in %helper
 
 %helper is the primary driver for this framework.
 
@@ -93,7 +249,7 @@ Data::Range::Compare relies on %helper to do its internal work.  So this section
 
 =item * add_one
 
-This function accepts one argument and returns the next thing.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
+This function accepts one argument and returns the next object.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
 
   Example:
 
@@ -125,7 +281,7 @@ This function accepts one argument and returns the next thing.  If you are imple
 
 =item * sub_one
 
-This function accepts one argument and returns the next thing.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
+This function accepts one argument and returns the next object.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
 
   Example:
 
@@ -178,9 +334,117 @@ Examples:
 
 =back
 
+=head2 Comparing Range Intersections
+
+In order to compare lists of ranges for intesections, you will need to  create a list of lists containing Data::Range::Compare Objects.
+
+
+Example:
+
+  
+  my %helper=HELPER_CB;
+
+  my @list_a=(
+    Data::Range::Compare->new(\%helper,1,2)
+    ,Data::Range::Compare->new(\%helper,2,3)
+  );
+  my @list_b=(
+    Data::Range::Compare->new(\%helper,0,1)
+    ,Data::Range::Compare->new(\%helper,4,7)
+  );
+
+  my @compaire_all=(\@list_a,\@list_b);
+
+
+Once the list of list refrences has been created it is possable to compare the list of ranges.
+
+Example:
+
+  my $cmp=Data::Range::Compare->range_compare(
+      \%helper
+      ,\@compaire_all
+  );
+
+The above creates an anonymous subrouteen that can iterate through the list of ranges.
+
+Example:
+
+  while(my ($column_a,$column_b) = $cmp->() ) {
+    my $common=Data::Range::Compare->get_common_range(
+      \%helper
+        ,[
+          $column_a
+          ,$column_b
+        ]
+    );
+
+    print "\nCommon Range: ",$common,"\n";
+    if($column_a->missing) {
+      print "Not in set a";
+    } else {
+      print $column_a
+    }
+    print " , ";
+    if($column_b->missing) {
+      print "Not in set b";
+    } else {
+      print $column_b
+    }
+    print "\n";
+  }
+
+Output:
+
+  Common Range: 0 - 0
+  Not in set a , 0 - 1
+
+  Common Range: 1 - 1
+  1 - 3 , 0 - 1
+
+  Common Range: 2 - 3
+  1 - 3 , Not in set b
+
+  Common Range: 4 - 7
+  Not in set a , 4 - 7
+
+In the loop we check to see if any of our ranges were found in our sets of data.
+In this case the following ranges were not shared in both sets of data.
+
+  0 - 0
+  2 - 3
+  4 - 7 
+
+Our only intersecting range was
+
+  1 - 1
+
+The anonymouse subrouteen does not actually skip over ranges that were not in both sets of data.  In stead creates a new missing range that represents the gap from that set of data.
+
+If we just wish to see the intersecting sets of data we need to change our while loop just a little bit.
+
+
+  while(my ($column_a,$column_b) = $cmp->() ) {
+    next if $column_a->missing;
+    next if $column_b->missing;
+    my $common=Data::Range::Compare->get_common_range(
+      \%helper
+        ,[
+          $column_a
+          ,$column_b
+        ]
+    );
+    print "Column_a and Column_b intersect at: ",$common,"\n";
+  }
+
+  Output:
+
+  Column_a and Column_b intersect at: 1 - 1
+
+As noted when looking at our data, the only intersecting range was "1 - 1" between @list_a and @list_b.
+
 =head2 OO Methods
 
-This section covers the OO Methods in the package
+This section covers the OO Methods in the package.
 
 =over 3
 
@@ -210,11 +474,11 @@ Grants access to this range's \%helper.
 
 =item * my $range_end=$range->range_end;
 
-Returns the "thing" that is denoted as the end of this range.
+Returns the "object" that is denoted as the end of this range.
 
 =item * my $range_start=$range->range_start;
 
-Returns the "thing" that is denoted as the start of this range.
+Returns the "object" that is denoted as the start of this range.
 
 =item * my $notation=$range->notation;
 
@@ -244,13 +508,25 @@ Lets you tag this block with your data.
 
 Returns true if either of these ranges overlap.
 
+=item * if($range->contains_value($some_value) { .. }
+
+Returns true if this value is between the start and end values for this range.
+
+=item * my $list=$range->grep_overlap(\@list_of_ranges);
+
+Returns an anonymouse array of ranges from @list_of_ranges that overlap with this ragne.
+
+=item * my $list=$range->grep_nonoverlap(\@list_of_ranges);
+
+Returns an anonymouse array of ranges from @list_of_ranges that do not overlap with this range.
+
 =item * my $next_start=$range->next_range_start;
 
-Gets the thing that represents the start of the next range.
+Gets the object that represents the start of the next range.
 
 =item * my $previous_end=$range->previous_range_end;
 
-Gets the thing that represents the end of the previous range.
+Gets the object that represents the end of the previous range.
 
 =item * my $cmp=$range->cmp_range_start($range_b);
 
@@ -377,6 +653,36 @@ Sorts a list Data::Range::Compare objects by range_start in descending order.
 
 =back
 
+=head2 Export list
+
+:KEYS
+
+  key_helper
+  key_start
+  key_end
+  key_generated
+  key_missing
+  key_data
+
+:HELPER_CB
+
+  HELPER_CB
+
+:HELPER
+
+  add_one
+  sub_one
+  cmp_values
+
+:SORT
+
+  sort_largest_range_end_first
+  sort_largest_range_start_first
+  sort_smallest_range_start_first
+  sort_smallest_range_end_first
+  sort_in_consolidate_order
+  sort_in_presentation_order
+
 =head1 SEE ALSO
 
 Data::Range::Compare::Cookbook
@@ -385,9 +691,9 @@ Data::Range::Compare::Cookbook
 
 Michael Shipper
 
-=head1 SourceForge Project
+=head1 Source-Forge Project
 
-As of version 1.026 the Project has been moved to SourceForge.net
+As of version 1.026 the Project has been moved to Source-Forge.net
 
 L<Data Range Compare|https://sourceforge.net/projects/data-range-comp/>
 L<https://sourceforge.net/projects/data-range-comp/>

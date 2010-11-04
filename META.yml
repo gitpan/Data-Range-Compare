@@ -1,7 +1,7 @@
 --- #YAML:1.0
 name:                Data-Range-Compare
-version:             1.027
-abstract:            Framework for calculating range intersections
+version:             1.028
+abstract:            Find gaps and intersections in ranges
 license:             ~
 author:              
     - Michael Shipper <AKALINUX@cpan.org>

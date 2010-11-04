@@ -19,10 +19,14 @@ t/process.t
 t/sort_funcs.t
 t/start_end.t
 t/subclass.t
+t/contains.t
+t/grep_overlap.t
 examples/example_a.pl
 examples/Recipe_subclass_a_to_z.pl
 examples/a_to_z.pm
 examples/example_a.pl
 examples/example_a_to_z.pl
 examples/DateTime.pl
+examples/pod_Comparing_Range_Intersections.pl
+examples/pod_Comparing_Range_Intersections_only.pl
 META.yml                                 Module meta-data (added by MakeMaker)
