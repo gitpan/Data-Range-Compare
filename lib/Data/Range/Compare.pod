@@ -3,7 +3,7 @@
 
 =head1 NAME
 
-Data::Range::Compare - Find gaps and intersections in ranges
+Data::Range::Compare - Find gaps & intersections in lists of ranges
 
 =head1 SYNOPSIS
 
@@ -41,7 +41,7 @@ This package provides a universal framework for calculating the intersections an
 
 =head2 Getting Started
 
-In order to use this package on your data, you will need to create 3 functions to handle computations of your data.
+In order to use this package on your data, you will need to create 3 subroutines to handle computations of your data.
 
 =over 4
 
@@ -64,7 +64,7 @@ of the following numeric ranges.
      1) 0 to 1
      2) 2 to 7
 
-    So lets create our function to compare values.
+    So lets create our subroutine to compare values.
 
     sub compare_two_values ($$)
     {
@@ -73,7 +73,7 @@ of the following numeric ranges.
     }
 
 
-    This function will safely compare the start and or 
+    This subroutine will safely compare the start and or 
     end values of our ranges.
 
 But what happens if we want to compare ranges that are represented by letters of the alphabet?
@@ -90,7 +90,7 @@ But what happens if we want to compare ranges that are represented by letters of
      1) a to b
      2) c to h
 
-   So lets create a function that can compare the start and end 
+   So lets create a subroutine that can compare the start and end 
    values of our ranges.
 
     sub compare_two_values ($$)
@@ -99,21 +99,21 @@ But what happens if we want to compare ranges that are represented by letters of
        return $value_a cmp $value_b;
     }
 
-    Note: This function is slightly different than our original 
-    function as we have swapped out the "<=>" operator for the 
-    "cmp" operator.  This function will now safely compare the 
+    Note: This subroutine is slightly different than our original 
+    subroutine as we have swapped out the "<=>" operator for the 
+    "cmp" operator.  This subroutine will now safely compare the 
     start and end value of our ranges.
 
 
-=item * Computing the next value
+=item * Computing the Next value
 
 Since we can now compare start and end values of our ranges we need to be able to compute the next value.
 
-Given our numeric ranges from the "Compare start and end values" its very simple to create a function to compute the next value.
+Given our numeric ranges from the "Compare start and end values" it's very simple to create a subroutine to compute the next value.
 
 Example:
 
-  Now we need to create a function to compute the next given
+  Now we need to create a subroutine to compute the next given
   value from a start or end range value.
 
     Range list a:
@@ -126,9 +126,9 @@ Example:
      1) 0 to 1
      2) 2 to 7
 
-   A function that can compute the next value in the case of
-   numeric ranges is as simple as creating a function that just
-   adds 1 to what ever number is passed into the function.
+   A subroutine that can compute the next value in the case of
+   numeric ranges is as simple as creating a subroutine that just
+   adds 1 to what ever number is passed into the subroutine.
 
    sub add_one ($) 
    {
@@ -168,7 +168,7 @@ Example:
   }
 
 
-  This function can now compute the beginning of the next range.
+  This subroutine can now compute the beginning of the next range.
   So if we wanted to compute the start of the next range for 
   set a - 1 we would get a return value of d.
 
@@ -189,7 +189,7 @@ Example:
      1) 0 to 1
      2) 2 to 7
 
-  Once again creating a function to compute the previous value
+  Once again creating a subroutine to compute the previous value
   based on a start or end value is very easy when we are dealing
   with numeric ranges.
 
@@ -200,9 +200,10 @@ Example:
   Given set a - 1 start value our return value would be 0.
 
 
-Once again this works fine for numeric ranges, but how would we calculate the previous range for a ranges represented by letters of the alphabet?
+Once again this works fine for numeric ranges, but how would we calculate the previous start or end value for a range represented by letters of the alphabet?
 
 Example: 
+
     Range list a:
 
      1) b to c
@@ -236,7 +237,7 @@ Example:
 Data::Range::Compare relies on %helper to do its internal work.  So this section explains how to populate %helper.
 
 
-  # to import the default %helper functions into your package
+  # to import the default %helper subroutines into your package
   use Data::Range::Compare qw(:HELPER);
 
   my %helper=(
@@ -249,7 +250,7 @@ Data::Range::Compare relies on %helper to do its internal work.  So this section
 
 =item * add_one
 
-This function accepts one argument and returns the next object.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
+This subroutine accepts one argument and returns the next object.  If you are implementing your own add_one, just make sure it returns the correct next value for your data.
 
   Example:
 
@@ -281,7 +282,7 @@ This function accepts one argument and returns the next object.  If you are impl
 
 =item * sub_one
 
-This function accepts one argument and returns the next object.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
+This subroutine accepts one argument and returns the next object.  If you are implementing your own sub_one, just make sure it returns the correct previous value for your data.
 
   Example:
 
@@ -313,7 +314,7 @@ This function accepts one argument and returns the next object.  If you are impl
 
 =item * cmp_values
 
-This function accepts 2 arguments and should return one of the following values: 0,-1,1
+This subroutine accepts 2 arguments and should return one of the following values: 0,-1,1
 
 Examples:
 
@@ -336,7 +337,7 @@ Examples:
 
 =head2 Comparing Range Intersections
 
-In order to compare lists of ranges for intesections, you will need to  create a list of lists containing Data::Range::Compare Objects.
+In order to compare lists of ranges for intersections, you will need to  create a list of lists containing Data::Range::Compare Objects.
 
 
 Example:
@@ -356,7 +357,7 @@ Example:
   my @compaire_all=(\@list_a,\@list_b);
 
 
-Once the list of list refrences has been created it is possable to compare the list of ranges.
+Once the list of list references has been created it is possible to compare the list of ranges.
 
 Example:
 
@@ -365,7 +366,7 @@ Example:
       ,\@compaire_all
   );
 
-The above creates an anonymous subrouteen that can iterate through the list of ranges.
+The above creates an anonymous subroutine that can iterate through the list of ranges.
 
 Example:
 
@@ -418,7 +419,7 @@ Our only intersecting range was
 
   1 - 1
 
-The anonymouse subrouteen does not actually skip over ranges that were not in both sets of data.  In stead creates a new missing range that represents the gap from that set of data.
+The anonymous subroutine does not actually skip over ranges that were not in both sets of data.  Instead it creates a new missing range that represents the gap from that set of data.
 
 If we just wish to see the intersecting sets of data we need to change our while loop just a little bit.
 
@@ -460,7 +461,7 @@ This section covers the OO Methods in the package.
 
 =item * my $range=Data::Range::Compare->new(\%helper,0,1,$generated,$missing);
 
-This function acts as the general package constructor.  "$generated" represents the $range->generated state.  "$missing" represents the $range->missing state.
+This subroutine acts as the general package constructor.  "$generated" represents the $range->generated state.  "$missing" represents the $range->missing state.
 
 %helper is what drives the internals of our instance.
 
@@ -530,7 +531,7 @@ Gets the object that represents the end of the previous range.
 
 =item * my $cmp=$range->cmp_range_start($range_b);
 
-Wrapper function does the same as the following.
+Wrapper subroutine does the same as the following.
 
   my $cmp=$range->helper_cb(
     'cmp_values'
@@ -540,7 +541,7 @@ Wrapper function does the same as the following.
 
 =item * my $cmp=$range->cmp_range_end($range_b); 
 
-Wrapper function does the same as the following.
+Wrapper subroutine does the same as the following.
 
   my $cmp=$range->helper_cb(
     'cmp_values'
@@ -595,7 +596,7 @@ Creates filler ranges ensuring each list of ranges starts and ends with the same
 
 =item * my $sub=Data::Range::Compare->range_compare( \%helper, \@list_of_lists, consolidate_ranges=>1);
 
-Returns an anonymous function.  The function can be used to iterate through the list of lists at intersecting points.
+Returns an anonymous subroutine.  The subroutine can be used to iterate through the list of lists at intersecting points.
 
 Optional argument consolidate_ranges>(0||1)
 
@@ -619,7 +620,7 @@ Used to continue iteration through @list_of_lists while $next;
 
 =head2 Sort Methods
 
-This section documents the export-able sort functions.  These are low level sort functions and must be used in a call to "sort".
+This section documents the export-able sort subroutines.  These are low level sort subroutines and must be used in a call to "sort".
 
 Example: 
 
