@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Data-Range-Compare
-version:             1.029
+version:             1.030
 abstract:            Find gaps & intersections in lists of ranges
 license:             ~
 author:              

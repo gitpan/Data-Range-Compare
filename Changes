@@ -29,3 +29,7 @@ Change log file for data-range-comp
  
 1.029
   Pod and meta data updates
+
+1.030
+  More Pod clean ups
+    Corrected documentation in Compare.pod

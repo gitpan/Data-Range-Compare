@@ -453,7 +453,7 @@ This section covers the OO Methods in the package.
 
 =item * my $range=new Data::Range::Compare(\%helper,0,1,$generated);
 
-=item * my $range=new Data::Range::Compare(\%helper,0,1,$generated,$missing);
+=item * my $range=new Data::Range::Compare(\%helper, 0, 1, $generated, $missing);
 
 =item * my $range=Data::Range::Compare->new(\%helper,0,1);
 
@@ -505,21 +505,21 @@ Returns the generated state
 
 Lets you tag this block with your data.
 
-=item * if($range->overlap($another_range);
+=item * if($range->overlap($another_range)) { .. }
 
 Returns true if either of these ranges overlap.
 
-=item * if($range->contains_value($some_value) { .. }
+=item * if($range->contains_value($some_value)) { .. }
 
 Returns true if this value is between the start and end values for this range.
 
 =item * my $list=$range->grep_overlap(\@list_of_ranges);
 
-Returns an anonymouse array of ranges from @list_of_ranges that overlap with this ragne.
+Returns an anonymous array of ranges from @list_of_ranges that overlap with this ragne.
 
 =item * my $list=$range->grep_nonoverlap(\@list_of_ranges);
 
-Returns an anonymouse array of ranges from @list_of_ranges that do not overlap with this range.
+Returns an anonymous array of ranges from @list_of_ranges that do not overlap with this range.
 
 =item * my $next_start=$range->next_range_start;
 
